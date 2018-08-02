@@ -3,7 +3,7 @@ angular.module('bdms').directive('donatorMap', ['MapService', 'DonatorService', 
 	return {
 		restrict: 'A',
 		link: function (scope, elem) {
-			MapService.init("AIzaSyB_mCLm_pLl_xLGh6tL1XIG4TnNHTowQmc").then(function () {
+			MapService.init("API_KEY").then(function () {
 				scope.map = new MapService.api.Map(elem.get(0), {
 					center: {lat: elem.data('center-lat') || 46.7651382, lng: elem.data('center-lng') || -92.2513077},
 					zoom: elem.data('zoom') || 8,
