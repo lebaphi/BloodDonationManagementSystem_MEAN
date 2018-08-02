@@ -1,8 +1,6 @@
 # BloodDonationManagementSystem
 Implement the Blood Donation Management System by AngularJS/NodeJS/MongoDB, CrossOverTest
 
-# Blood Donation Management System
-
 ## Installation
 
 1. Unzip
