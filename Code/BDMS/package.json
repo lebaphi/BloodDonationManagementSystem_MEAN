@@ -1,0 +1,33 @@
+{
+  "name": "bdms",
+  "version": "0.0.1",
+  "description": "Blood Donation Management System",
+  "main": "server/ServerApp.js",
+  "scripts": {
+    "start": "nodemon $npm_package_main",
+    "prestart": "npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "phileba",
+  "license": "phileba",
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-resource": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-ui-bootstrap": "^2.5.0",
+    "body-parser": "^1.14.2",
+    "bootstrap": "^3.3.6",
+    "express": "^4.13.4",
+    "jquery": "^2.2.0",
+    "mongodb": "^2.1.6",
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {
+    "node-rest-client": "^3.1.0",
+    "nodemon": "^1.8.1"
+  },
+  "config": {
+    "port": 3000,
+    "db": "mongodb://localhost:27017/blooddonator"
+  }
+}

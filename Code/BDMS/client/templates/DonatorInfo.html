@@ -1,0 +1,19 @@
+<div class="donator">
+  <h2>{{donator.getFullName()}}</h2>
+  <dl>
+    <dt>Blood Group</dt>
+    <dd>{{donator.bloodGroup}}</dd>
+  </dl>
+  <dl ng-if="isPhoneShown">
+    <dt>Contact Number</dt>
+    <dd>{{donator.phone}}</dd>
+  </dl>
+  <a ng-if="!isPhoneShown" ng-click="showPhone()">Show Contact Number</a>
+  <dl>
+    <dt>Email Address</dt>
+    <dd>{{donator.email}}</dd>
+    <dt>Address</dt>
+    <dd>{{donator.address}}</dd>
+  </dl>
+  <a href="/" class="btn btn-link donator-close" type="button">Close</a>
+</div>

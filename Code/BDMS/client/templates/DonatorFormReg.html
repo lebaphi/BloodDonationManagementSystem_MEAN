@@ -1,0 +1,54 @@
+<form name="donatorForm" novalidate ng-submit="onSubmit(donator, donatorForm)" ng-hide="locationMode">
+  <fieldset>
+    <legend class="text-center" ng-show="!donator._id">Become a Donator</legend>
+    <legend class="text-center" ng-show="donator._id">Donator Management</legend>
+    <div class="alert alert-info" role="alert" ng-show="donator._id" id="alertInfo">
+      {{msg}} <a ng-href="/manage/{{donator._id}}">/manage/{{donator._id}}</a>
+    </div>
+    <dl class="form-group">
+      <dt><label for="firstname">First Name</label></dt>
+      <dl><input class="form-control input-sm" id="firstname" ng-model="donator.firstname" required></dl>
+    </dl>
+    <dl class="form-group">
+      <dt><label for="lastname">Last Name</label></dt>
+      <dl><input class="form-control input-sm" id="lastname" ng-model="donator.lastname" required></dl>
+    </dl>
+    <dl class="form-group">
+      <dt><label for="phone">Contact Number</label></dt>
+      <dl><input class="form-control input-sm" id="phone" ng-model="donator.phone" required type="tel" pattern="(\+|00)\d{12}"></dl>
+    </dl>
+    <dl class="form-group">
+      <dt><label for="email">Email Address</label></dt>
+      <dl><input class="form-control input-sm" id="email" ng-model="donator.email" required type="email"></dl>
+    </dl>
+    <dl class="form-group">
+      <dt><label for="bloodgroup">Blood Group</label></dt>
+      <dl>
+        <select class="form-control input-sm" id="bloodgroup" ng-model="donator.bloodGroup" required>
+          <option ng-repeat="group in ['O', 'A', 'B', 'AB']" value="{{group}}">{{group}}</option>
+        </select>
+      </dl>
+    </dl>
+    <dl class="form-group">
+      <dt><label for="address">Address</label> <button type="button" class="btn btn-default btn-xs" ng-class="{'btn-default': donator.coordinates, 'btn-primery': !donator.coordinates}" ng-click="onLocation()">{{donator.coordinates ? 'Change' : 'Set'}} location</button></dt>
+      <dl>
+        <p class="form-control-static" ng-show="donator.coordinates">{{donator.address}}</p>
+        <p class="form-control-static" ng-hide="donator.coordinates">We could not find your location</p>
+      </dl>
+    </dl>
+    <div class="form-group text-center">
+      <button class="btn btn-success" type="submit" id="btnSubmit" ng-disabled="!donatorForm.$valid || !donator.coordinates">{{donator._id ? 'Save' : 'Submit'}}</button>
+      <button class="btn btn-danger" type="button" ng-show="donator._id" ng-click="onRemove()">Remove</button>
+      <a href="/" class="btn btn-default" type="button">Cancel</a>
+    </div>
+  </fieldset>
+</form>
+<header class="form-horizontal text-center" ng-show="locationMode">
+  <div class="form-group">
+    <label for="address">Your location is:</label>
+    <p class="form-control-static" ng-show="donator.coordinates">{{donator.address}}</p>
+    <p class="form-control-static" ng-hide="donator.coordinates">We could not find your location</p>
+    <button class="btn btn-success" ng-disabled="!donator.coordinates" ng-click="saveLocation()">OK</button>
+    <button class="btn btn-danger" type="button" ng-click="cancelLocation()">Cancel</button>
+  </div>
+</header>
